@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useContext} from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./style/app.css";
 
-function App() {
+import {MyContext} from "./context";
+
+import Stage1 from "./components/stage_1";
+import Stage2 from "./components/stage_2";
+
+const App = () => {
+  const context = useContext(MyContext);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={"wrapper"}>
+      <div className="center-wrapper">
+        <h1>Who pays the bill?</h1>
+        {context.state.stage === 1 && <Stage1 />}
+        {context.state.stage === 2 && <Stage2 />}
+      </div>
     </div>
   );
-}
+};
 
 export default App;
